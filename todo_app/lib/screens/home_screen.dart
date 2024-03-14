@@ -129,7 +129,9 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {});
   }
 
-  void _showSearchPage() {
-    showSearch(context: context, delegate: CustomSearchDelegate());
+  void _showSearchPage() async {
+    await showSearch(
+        context: context, delegate: CustomSearchDelegate(allTasks: _allTasks));
+    _getAllTaskFromDB();
   }
 }

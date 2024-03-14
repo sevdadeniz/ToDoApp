@@ -18,7 +18,7 @@ Future<void> setupHive() async {
     //kutudaki değerleri gez
     if (task.createAt.day != DateTime.now().day) {
       //taskın günü ile bugün eşit değilse
-      taskBox.delete(task);
+      taskBox.delete(task.id);
     }
   }
 }
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'todo list',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

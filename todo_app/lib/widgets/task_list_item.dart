@@ -19,11 +19,11 @@ class _TaskItemState extends State<TaskItem> {
   void initState() {
     _localStorage = locator<LocalStorage>();
     super.initState();
-    controller.text = widget.task.name;
   }
 
   @override
   Widget build(BuildContext context) {
+    controller.text = widget.task.name;
     return Container(
       margin: const EdgeInsets.all(5.0),
       decoration: BoxDecoration(
