@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:todo_app/data/locale_storage.dart';
@@ -37,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
             _showAddTaskButtonSheet();
           },
           child: const Text(
-            "Bugün neler yapacaksın?",
+           "title",
             style: TextStyle(color: Colors.black, fontSize: 13),
-          ),
+          ).tr(),//tr translate için 
         ),
         actions: [
           IconButton(
@@ -83,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
               itemCount: _allTasks.length,
             )
           : Center(
-              child: const Text("Haydi görev ekle"),
+              child:  Text("lets_create_task").tr(),
             ),
     );
   }
@@ -100,8 +101,8 @@ class _HomeScreenState extends State<HomeScreen> {
             title: TextField(
               autofocus: true,
               style: const TextStyle(fontSize: 20),
-              decoration: const InputDecoration(
-                  hintText: "Görev giriniz", border: InputBorder.none),
+              decoration:  InputDecoration(
+                  hintText: "add_task".tr(), border: InputBorder.none),
               onSubmitted: (value) {
                 Navigator.of(context).pop();
                 DatePicker.showTimePicker(

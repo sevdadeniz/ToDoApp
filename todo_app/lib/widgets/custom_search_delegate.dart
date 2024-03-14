@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/data/locale_storage.dart';
 import 'package:todo_app/main.dart';
@@ -70,7 +71,7 @@ class CustomSearchDelegate extends SearchDelegate {
             },
             itemCount: filteredList.length,
           )
-        : const Center(child: Text("Sonuç bulunmadı"));
+        :  Center(child: const Text("search_not_found").tr());
   }
 
   @override

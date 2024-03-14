@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_app/data/locale_storage.dart';
 import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/screens/home_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 final locator = GetIt.instance;
 void setup() {
@@ -26,9 +27,18 @@ Future<void> setupHive() async {
 void main() async {
   WidgetsFlutterBinding
       .ensureInitialized(); //uzun süren Run app ten önce çalışılmasını istediğimiz işlemler için
+  await EasyLocalization.ensureInitialized();
+
   await setupHive();
   setup();
-  runApp(const MyApp());
+  runApp(EasyLocalization(
+      path: 'assets/translations',
+      supportedLocales: const [
+        Locale('en', "US"),
+        Locale('tr', "TR"),
+      ],
+      fallbackLocale: const Locale('tr'),
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -39,6 +49,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'todo list',
+      supportedLocales: context.supportedLocales,
+      localizationsDelegates: context.localizationDelegates,//uygulama içerisindeki paketlerin içerisindeki kelimelerin dil değişimi için 
+      locale: context.deviceLocale,//uygulama cihazın dilinde başlasın
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
