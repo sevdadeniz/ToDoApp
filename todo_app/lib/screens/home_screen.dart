@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:todo_app/data/locale_storage.dart';
+import 'package:todo_app/helper/translation_helper.dart';
 import 'package:todo_app/main.dart';
 import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/widgets/custom_search_delegate.dart';
@@ -38,9 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
             _showAddTaskButtonSheet();
           },
           child: const Text(
-           "title",
+            "title",
             style: TextStyle(color: Colors.black, fontSize: 13),
-          ).tr(),//tr translate için 
+          ).tr(), //tr translate için
         ),
         actions: [
           IconButton(
@@ -84,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
               itemCount: _allTasks.length,
             )
           : Center(
-              child:  Text("lets_create_task").tr(),
+              child: Text("lets_create_task").tr(),
             ),
     );
   }
@@ -101,12 +102,13 @@ class _HomeScreenState extends State<HomeScreen> {
             title: TextField(
               autofocus: true,
               style: const TextStyle(fontSize: 20),
-              decoration:  InputDecoration(
+              decoration: InputDecoration(
                   hintText: "add_task".tr(), border: InputBorder.none),
               onSubmitted: (value) {
                 Navigator.of(context).pop();
                 DatePicker.showTimePicker(
                   context,
+                  locale: TranslationHelper.getDeviceLanguage(context),
                   showSecondsColumn: false, // saniye datasının görünmemesi için
                   onConfirm: (time) async {
                     var yeniEklenecekGorev =
