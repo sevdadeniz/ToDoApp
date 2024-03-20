@@ -32,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         centerTitle: false,
         title: GestureDetector(
           onTap: () {
@@ -103,7 +102,10 @@ class _HomeScreenState extends State<HomeScreen> {
               autofocus: true,
               style: const TextStyle(fontSize: 20),
               decoration: InputDecoration(
-                  hintText: "add_task".tr(), border: InputBorder.none),
+                hintText: "add_task".tr(),
+                border: InputBorder.none, // Alt çizgiyi kaldırın
+                
+              ),
               onSubmitted: (value) {
                 Navigator.of(context).pop();
                 DatePicker.showTimePicker(
